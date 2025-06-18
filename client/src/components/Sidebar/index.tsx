@@ -111,7 +111,7 @@ const Sidebar = () => {
               <SidebarLink href='/priority/medium' icon={AlertTriangle} label='Medium' />
               <SidebarLink href='/priority/low' icon={AlertOctagon} label='Low' />
               <SidebarLink href='/priority/backlog' icon={Layers3} label='
-              backLog' />
+              BackLog' />
             </>
           )
         }

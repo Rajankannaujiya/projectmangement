@@ -1,8 +1,6 @@
-export const dataFridClassNames = "border border-gray-200 bg-white shadow dark:border-stroke-dark dark:bg-dark-secondary dark:text-gray-200";
+export const dataGridClassNames = "border border-gray-200 bg-white shadow dark:border-stroke-dark dark:bg-dark-secondary dark:text-gray-200";
 
 
-// class="MuiDataGrid-filler css-xv98vr"
-// MuiDataGrid-root MuiDataGrid-root--densityStandard MuiDataGrid-withBorderColor border border-gray-200 bg-white shadow dark:border-stroke-dark dark:bg-dark-secondary dark:text-gray-200 MuiDataGridVariables-3851315942 css-js8qpo-MuiDataGrid-root
 export const dataGridSxStyles = (isDarkMode: boolean) => {
 
       const textColor = "#e5e7eb"; // Tailwind: text-gray-200
@@ -79,7 +77,7 @@ export const dataGridSxStyles = (isDarkMode: boolean) => {
     },
 
     "& .MuiDataGrid-filler": {
-         backgroundColor: isDarkMode ? "#1d1f21" : "#ffffff"
+      backgroundColor: isDarkMode ? "#1d1f21 !important" : "#ffffff !important"
     }
   };
 };

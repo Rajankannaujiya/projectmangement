@@ -38,8 +38,8 @@ export interface Task {
   status?: Status;
   priority?: Priority;
   tags?: string;
-  startDate?: Date;
-  dueDate?: Date;
+  startDate?: string;
+  dueDate?: string;
   points?: string;
   projectId: number;
   authorUserId?: number;
@@ -51,7 +51,20 @@ export interface Task {
   attachments?: Attachment[];
 }
 
-enum Priority {
+export interface searchResult {
+  tasks?: Task [];
+  projects?: Project[];
+  users?: User[];
+}
+
+export interface Team{
+  teamId: number;
+  teamName: string;
+  productOwnerUserId?: number;
+  productManagerUserId?: number;
+}
+
+export enum Priority {
   Urgent = "URGENT",
   High = "HIGH",
   Medium = "MEDIUM",
@@ -59,7 +72,7 @@ enum Priority {
   Backlog = "BACKLOG",
 }
 
-enum Status {
+export enum Status {
   Pending = "PENDING",
   Completed = "COMPLETED",
   Progress = "PROGRESS",

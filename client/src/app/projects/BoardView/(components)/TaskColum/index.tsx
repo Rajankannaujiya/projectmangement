@@ -2,7 +2,7 @@ import { EllipsisVertical, Plus } from "lucide-react";
 import React from "react";
 import { useDrop } from "react-dnd";
 import { Task as TaskType } from '@/state/type';
-import Task from "@/app/projects/BoardView/(components)/Task/page"
+import Task from "@/app/projects/BoardView/(components)/Task"
 
 type TaskColumnProps = {
   status: string;

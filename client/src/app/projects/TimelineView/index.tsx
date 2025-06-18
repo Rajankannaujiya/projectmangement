@@ -3,8 +3,8 @@ import { useGetTasksQuery } from '@/state/api';
 import React, { useMemo, useState } from 'react';
 import { DisplayOption, Gantt, ViewMode } from 'gantt-task-react'
 import "gantt-task-react/dist/index.css"
-import Loading from '@/components/Loading/page';
-import Error from '@/components/Error/page';
+import Loading from '@/components/Loading';
+import {Error} from '@/components/alert';
 
 type Props = {
     id: string;
@@ -74,8 +74,8 @@ Project Task Timeline</h1>
           onChange={handleViewModeChange}
           >
             <option value={ViewMode.Day}>Day</option>
-            <option value={ViewMode.Week}>Day</option>
-            <option value={ViewMode.Month}>Day</option>
+            <option value={ViewMode.Week}>Week</option>
+            <option value={ViewMode.Month}>Month</option>
           </select>
         </div>
 

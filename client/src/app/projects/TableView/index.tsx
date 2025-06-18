@@ -1,19 +1,16 @@
 import { useAppSelector } from '@/app/redux';
-import Loading from '@/components/Loading/page';
-import Error from '@/components/Error/page';
+import Loading from '@/components/Loading';
+import {Error} from '@/components/alert';
 import { useGetTasksQuery } from '@/state/api';
 import React from 'react'
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
-import Header from '@/components/Header/page';
-import { dataFridClassNames, dataGridSxStyles } from '@/lib/utils';
+import Header from '@/components/Header';
+import { dataGridClassNames, dataGridSxStyles } from '@/lib/utils';
 
 type Props = {
     id: string;
     setIsModalNewTaskOpen: (isOpen: boolean) =>void 
 }
-
-
-const page = ({id, setIsModalNewTaskOpen}: Props) => {
 
     const columns: GridColDef[] = [
         {
@@ -65,15 +62,20 @@ const page = ({id, setIsModalNewTaskOpen}: Props) => {
             field: "author",
             headerName: "Author",
             width: 150,
-            renderCell: (params)=> params.value.username || "Unknown"
+            // renderCell: (params)=> params.value?.author || "Unknown"
+            renderCell: (params)=> params.value?.author || "Unknown"
         },
         {
             field: "assignee",
             headerName: "Assignee",
             width: 150,
-            renderCell: (params)=> params.value.username || "unAssigned"
+            // renderCell: (params)=> params.value?.assignee || "Unknown"
+            renderCell: (params)=> params.value?.assignee || "unAssigned"
         },
     ]
+
+const page = ({id, setIsModalNewTaskOpen}: Props) => {
+
 
     const isDarkMode = useAppSelector((state)=>state.global.isDarkMode);
 
@@ -91,12 +93,19 @@ const page = ({id, setIsModalNewTaskOpen}: Props) => {
   return (
     <div className='h-[540px] w-full px-4 pb-8 xl:px-6'>
         <div className='pt-5'>
-            <Header name='Table' isSmallText/>
+            <Header name='Table'
+             buttonComponent={
+              <button className='flex items-center rounded bg-blue-primary px-3 py-2 text-white hover:bg-blue-600' onClick={()=>setIsModalNewTaskOpen(true)}>
+                Add Task
+
+              </button>
+            }
+             isSmallText/>
         </div>
         <DataGrid 
         rows={tasks || []}
         columns={columns}
-        className={dataFridClassNames}
+        className={dataGridClassNames}
         sx={dataGridSxStyles(isDarkMode)}
         />
     </div>

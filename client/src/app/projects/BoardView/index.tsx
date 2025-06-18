@@ -1,10 +1,10 @@
 import { useGetTasksQuery, useUpdateTaskStatusMutation } from '@/state/api';
 import React from 'react';
-import Loading from '@/components/Loading/page'
-import Error from '@/components/Error/page'
+import Loading from '@/components/Loading'
+import {Error} from '@/components/alert'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import TaskColumn from '@/app/projects/BoardView/(components)/TaskColum/page';
+import TaskColumn from '@/app/projects/BoardView/(components)/TaskColum';
 
 type Props = {
     id: string;
@@ -17,7 +17,7 @@ const BoardView = ({id, setIsModalNewTaskOpen}: Props) => {
 const {
     data: tasks,
     isLoading,
-    error,
+    isError,
     
 } = useGetTasksQuery({projectId:Number(id)});
 
@@ -34,7 +34,7 @@ if(isLoading){
   return <Loading />
 }
 
-if(error){
+if(isError){
   return <Error errorMessage='An error occured while fetching tasks' />
 }
 
